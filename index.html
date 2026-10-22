@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chic Hair By Marthe</title>
+    <link rel="icon" type="image/png" href="1.png">
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Barre de Défilement de Bienvenue -->
+<div class="welcome-bar">
+    <div class="marquee-content">
+        <span>✨ Bienvenue chez <strong>Chic Hair By Marthe</strong> ! ✨ &nbsp;&nbsp;•&nbsp;&nbsp; ✂️ Coiffure professionnelle à domicile &nbsp;&nbsp;•&nbsp;&nbsp; 📞 Réservation rapide via WhatsApp &nbsp;&nbsp;•&nbsp;&nbsp; 💳 Paiement Orange Money accepté !</span>
+        <!-- Duplication pour un défilement fluide sans coupure -->
+        <span>✨ Bienvenue chez <strong>Chic Hair By Marthe</strong> ! ✨ &nbsp;&nbsp;•&nbsp;&nbsp; ✂️ Coiffure professionnelle à domicile &nbsp;&nbsp;•&nbsp;&nbsp; 📞 Réservation rapide via WhatsApp &nbsp;&nbsp;•&nbsp;&nbsp; 💳 Paiement Orange Money accepté !</span>
+    </div>
+</div>
+
+    <!-- En-tête / Header -->
+    <header class="header">
+        <div class="logo">
+            <img src="1.png" alt="Logo Chic Hair By Marthe" class="logo-img">
+            <span>Chic Hair By Marthe</span>
+        </div>
+        <div class="cart-icon" onclick="toggleCart()">
+            <i class="fa-solid fa-calendar-check"></i>
+            <span id="cart-count">0</span>
+        </div>
+    </header>
+
+    <!-- Bannière d'accueil Animée -->
+    <!-- Bannière d'accueil Animée avec Décors Coiffure -->
+<section class="hero">
+    <!-- Décors et Icônes de coiffure animés qui flottent -->
+    <div class="hero-decorations">
+        <i class="fa-solid fa-scissors floating-icon icon-1" title="Ciseaux"></i>
+        <i class="fa-solid fa-wand-magic-sparkles floating-icon icon-2" title="Éclat"></i>
+        <i class="fa-solid fa-pump-soap floating-icon icon-3" title="Soin Capillaire"></i>
+        <i class="fa-solid fa-comb floating-icon icon-4" title="Peigne"></i>
+        <i class="fa-solid fa-heart floating-icon icon-5" title="Love"></i>
+    </div>
+
+    <div class="hero-content">
+        <span class="hero-tag"><i class="fa-solid fa-scissors"></i> Coiffure Professionnelle</span>
+        <h2>Révélez Votre Beauté Africaine !</h2>
+        <p>Coiffures personnalisées dans le confort de chez vous ou chez nous.</p>
+    </div>
+</section>
+    <!-- Champ de Recherche -->
+<main class="products-section">
+    <div class="search-container">
+        <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="search-input" placeholder="Rechercher une coiffure ex: Nattes..." oninput="filterProductsBySearch(this.value)">
+        </div>
+    </div>
+
+    <div class="section-title">
+        <h3>Nos Prestations de Coiffure</h3>
+    </div>
+    
+    <div class="products-grid" id="products-grid">
+        <!-- Chargement dynamique via JavaScript -->
+    </div>
+</main>
+
+    <!-- Grille des Prestations -->
+    <main class="products-section">
+        <div class="section-title">
+            
+        </div>
+        <div class="products-grid" id="products-grid">
+            <!-- Chargement dynamique via JavaScript -->
+        </div>
+    </main>
+
+    <!-- Modal de Réservation & Panier -->
+    <div class="cart-modal" id="cart-modal">
+        <div class="cart-content">
+            <div class="cart-header">
+                <h3><i class="fa-solid fa-calendar-days"></i> Ma Réservation</h3>
+                <span class="close-cart" onclick="toggleCart()">&times;</span>
+            </div>
+            
+            <div class="cart-body">
+                <!-- Liste des prestations choisies -->
+                <div id="cart-items">
+                    <p class="empty-cart-msg">Aucune prestation sélectionnée pour l'instant.</p>
+                </div>
+
+                <!-- Formulaire de Rendez-vous -->
+                <div class="booking-form" id="booking-form" style="display: none;">
+                    <h4><i class="fa-solid fa-clock"></i> Détails du Rendez-vous</h4>
+                    
+                    <!-- Option de Déplacement -->
+                    <div class="form-group">
+                        <label>Lieu de la prestation :</label>
+                        <select id="travel-option" onchange="updateCartUI()">
+                            <option value="coiffeuse">La coiffeuse se déplace (+500 FCFA)</option>
+                            <option value="cliente">Je me déplace (0 FCFA)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="booking-date">Date souhaitée :</label>
+                        <input type="date" id="booking-date" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="booking-time">Heure souhaitée :</label>
+                        <select id="booking-time">
+                            <option value="08:00">08h00</option>
+                            <option value="09:00">09h00</option>
+                            <option value="10:00">10h00</option>
+                            <option value="11:00">11h30</option>
+                            <option value="12:00">12h00</option>
+                            <option value="13:00">13h00</option>
+                            <option value="14:00">14h00</option>
+                            <option value="15:00">15h00</option>
+                            <option value="16:00">16h00</option>
+                            <option value="17:00">17h00</option>
+                            <option value="18:00">18h00</option>
+                            <option value="19:00">10h00</option>
+                            <option value="20:00">20h00</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" style="position: relative;">
+                        <label for="booking-location">Quartier :</label>
+                        <input type="text" id="booking-location" placeholder="Ex: Yelwa, Petit paris, Djamboutou..." autocomplete="off" oninput="showSuggestions(this.value)" required>
+                        <!-- Suggestions automatiques -->
+                        <div id="suggestions-list" class="suggestions-dropdown"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cart-footer">
+                <div class="cart-total">
+                    <span>Total Estimé :</span>
+                    <strong id="cart-total-price">0 FCFA</strong>
+                </div>
+                <div class="payment-info">
+                    <p><i class="fa-solid fa-mobile-screen-button"></i> Dépôt accepté : <strong>Orange Money</strong></p>
+                </div>
+                <button class="whatsapp-btn" onclick="sendWhatsAppOrder()">
+                    <i class="fa-brands fa-whatsapp"></i> Réserver sur WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Section Avis Clients & Notation -->
+    <section class="testimonials-section">
+        <div class="section-title">
+            <h3>Ce que disent nos clientes</h3>
+            <p>Découvrez les retours ou laissez votre propre avis !</p>
+        </div>
+
+        <!-- Bouton pour ouvrir le formulaire -->
+        <div style="text-align: center; margin-bottom: 25px;">
+            <button class="add-review-btn" onclick="toggleReviewForm()">
+                <i class="fa-solid fa-pen-to-square"></i> Laisser un avis
+            </button>
+        </div>
+
+        <!-- Formulaire de dépôt d'avis (masqué par défaut) -->
+        <div class="review-form-container" id="review-form-container" style="display: none;">
+            <h4>Laissez votre avis</h4>
+            <form id="review-form" onsubmit="submitReview(event)">
+                <div class="form-group">
+                    <label>Votre Nom / Prénom :</label>
+                    <input type="text" id="reviewer-name" placeholder="Ex: Chantal" required>
+                </div>
+                <div class="form-group">
+                    <label>Votre Quartier :</label>
+                    <input type="text" id="reviewer-location" placeholder="Ex: Djamboutou" required>
+                </div>
+                <div class="form-group">
+                    <label>Votre Note :</label>
+                    <div class="star-rating-input">
+                        <i class="fa-solid fa-star star-btn" onclick="setRating(1)"></i>
+                        <i class="fa-solid fa-star star-btn" onclick="setRating(2)"></i>
+                        <i class="fa-solid fa-star star-btn" onclick="setRating(3)"></i>
+                        <i class="fa-solid fa-star star-btn" onclick="setRating(4)"></i>
+                        <i class="fa-solid fa-star star-btn" onclick="setRating(5)"></i>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Votre Commentaire :</label>
+                    <textarea id="reviewer-comment" rows="3" placeholder="Racontez votre expérience..." required></textarea>
+                </div>
+                <button type="submit" class="submit-review-btn">
+                    <i class="fa-solid fa-paper-plane"></i> Publier mon avis
+                </button>
+            </form>
+        </div>
+
+        <!-- Conteneur des avis -->
+        <div class="testimonials-grid" id="testimonials-grid">
+            <!-- Les avis existants et nouveaux s'afficheront ici -->
+        </div>
+    </section>
+    <!-- Pied de Page / Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="logo" style="color: #fff;">
+                    <i class="fa-solid fa-scissors logo-icon"></i>
+                    <span>Chic Hair By Marthe</span>
+                </div>
+                <p>Prestations de coiffure professionnelles. Sublimez vos cheveux en toute sérénité.</p>
+            </div>
+
+            <div class="footer-contact">
+                <h4>Contact & Réservation</h4>
+                <p><i class="fa-solid fa-phone"></i> +237 692832319</p>
+                <p><i class="fa-solid fa-location-dot"></i> Garoua</p>
+                <p><i class="fa-solid fa-clock"></i> Sur Rendez-vous</p>
+            </div>
+
+            <div class="footer-socials">
+                <h4>Suivez-nous</h4>
+                <div class="social-icons">
+                    <a href="https://wa.me/237692832319" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <!-- <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a> -->
+                    <!-- <a href="https://tiktok.com" target="_blank" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a> -->
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 <strong>B-Technologie</strong>. Tous droits réservés.</p>
+        </div>
+    </footer>
+    <!-- Modal Zoom Image (Lightbox) -->
+        <div id="image-modal" class="image-modal" onclick="closeImageModal()">
+            <span class="close-image-modal">&times;</span>
+            <img class="image-modal-content" id="img-modal-target">
+            <div id="image-modal-caption"></div>
+        </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
